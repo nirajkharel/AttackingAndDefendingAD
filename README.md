@@ -3,8 +3,17 @@
 <a href="https://twitter.com/nirajkharel7" ><img src="https://img.shields.io/twitter/follow/nirajkharel7?style=social" /> </a>
 </div>
 
-**Domain Enumerationn Part 1**
+## Domain Enumerationn Part 1
 - The enumeration can be done by using Native executables and .NET classes
 - `$ADClass = [System.DirectoryServices.ActiveDirectory.Domain]`
 - `$ADClass::GetCurrentDomain()`
+- Where `DirectoryServices.ActiveDirectory.Domain` is a class and `GetCurrentDomain()` is a static method.
 
+**Domain Enumeration with Powerview and AD PowerShell module**
+- To speed up things we can use Powerview:
+- `https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1
+
+- The Active Directory PowerShell module
+- `https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps`
+- `https://github.com/samratashok/ADModule`
+- (To use ActiveDirectory module without installing RSAT, we can use Import-Module for the valid ActiveDirectory module DLL)
