@@ -38,3 +38,10 @@
 **Get Domain SID for the current domain**
 - `Get-DomainSID`
 - `(Get-ADDomain).DomainSID`
+
+**Get domain policy for the current domain**
+- `Get-DomainPolicy`
+- `(Get-DomainPolicy)."system acccess"`
+
+**Get domain policy for another domain**
+- `(Get-DomainPolicy -domain moneycorp.local)".system access"`
