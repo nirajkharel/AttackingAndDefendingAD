@@ -45,3 +45,23 @@
 
 **Get domain policy for another domain**
 - `(Get-DomainPolicy -domain moneycorp.local)".system access"`
+
+**Get domain controllers for the current domain**
+- `Get-NetDomainController`
+- `Get-ADDomainController`
+
+**Get domain controllers for another domain**
+- `Get-NetDomainController -Domain <domain-name>`
+- `Get-ADDomainController -DomainName <domain-name> -Discover`
+
+**Get a list of users in the current domain**
+- `Get-NetUser`
+- `Get-NetUser -Username <username>`
+- `Get-ADUser -Filter * -Properties *`
+- `Get-ADUser -Identity <username> -Properties *`
+
+**Get list of all properties for users in the current domain**
+- `Get-UserProperty`
+- `Get-UserProperty -Properties pwlastset`
+- `Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name`
+- `Get-ADUser -Filter * -Properties * | select name,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}`
