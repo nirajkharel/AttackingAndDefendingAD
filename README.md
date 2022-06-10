@@ -89,3 +89,11 @@
 **Get all groups containing the word "admin" in group name**
 - `Get-NetGroup -GroupName *admin*`
 - `Get-ADGroup -Filter 'Name -like "*admin*"' | select Name`
+
+**Get all the members of the Domain Admins Group**
+- `Get-NetGroupMember -GroupName "Domain Admins" -Recurse`
+- `Get-ADGroupMember -Identity "Domain Admins" -Recursive`
+
+**Get the group membership for a user**
+- `Get-NetGroup -Username "student1"`
+- `Get-ADPrincipalGroupMembership -Identity student1`
