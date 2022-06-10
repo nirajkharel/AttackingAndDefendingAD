@@ -70,3 +70,22 @@
 - `Find-UserField -SearchField Description`
 - `Find-UserField -SearchField Description -SearchTerm "built"`
 - `Get-ADUser -Filter 'Description -like "*built*"' -Properties Description | select name,Description`
+
+**Get a list of computers in the current domain**
+- `Get-NetComputer`
+- `Get-NetComputer -OperatingSystem "*Server 2016"`
+- `Get-NetComputer -Ping`
+- `Get-NetComputer -FullData`
+- `Get-ADComputer -Filter *`
+- `Get-ADComputer -Filter * | select Name`
+
+**Get all the groups in the current domain**
+- `Get-NetGroup`
+- `Get-NetGroup -Domain <targetDomain>`
+- `Get-NetGroup -FullData`
+- `Get-ADGroup -Filter * | select name`
+- `Get-ADGroup -Filter * -Properties *`
+
+**Get all groups containing the word "admin" in group name**
+- `Get-NetGroup -GroupName *admin*`
+- `Get-ADGroup -Filter 'Name -like "*admin*"' | select Name`
