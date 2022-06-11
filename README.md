@@ -97,3 +97,27 @@
 **Get the group membership for a user**
 - `Get-NetGroup -Username "student1"`
 - `Get-ADPrincipalGroupMembership -Identity student1`
+
+**List all the local groups on a machine (needs administrator privs on non-dc machines**
+- `Get-NetLocalGroup -ComputerName dcorp-dc.dollarccorp.moneycorp.local -ListGroups
+
+**Get members of all the local groups on a machine (needs administrator privs o non-dc machines)**
+- `Get-NetLocalGroup -ComputerName dcorp-dc.dollarcorp.moneycorp.local -Recurse`
+
+**Get actively logged users on a computer (needs local admin rights on the target)**
+- `Get-NetLoggedon -ComputerName <servername>`
+
+**Get locally logged users on a computer (needs remote registry on the target - started by-default on server OS)**
+- `Get-LoggedonLocal -ComputerName dcorp-dc.dollarcorp.moneycorp.local`
+
+**Get the last logged user on a computer (needs administrative rights and remote registry on the target)**
+- `Get-LastLoggedOn -ComputerName <servername>`
+
+**Find shares on hosts in current domain**
+- `Invoke-ShareFinder -Verbose`
+
+**Find sensitive files on computer in the domain**
+- `Invoke-FileFinder -Verbose`
+
+**Get all fileservers of the domain**
+- `Get-NetFileServer`
