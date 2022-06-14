@@ -100,7 +100,7 @@
 - `Get-ADPrincipalGroupMembership -Identity student1`
 
 **List all the local groups on a machine (needs administrator privs on non-dc machines**
-- `Get-NetLocalGroup -ComputerName dcorp-dc.dollarccorp.moneycorp.local -ListGroups
+- `Get-NetLocalGroup -ComputerName dcorp-dc.dollarccorp.moneycorp.local -ListGroups`
 
 **Get members of all the local groups on a machine (needs administrator privs o non-dc machines)**
 - `Get-NetLocalGroup -ComputerName dcorp-dc.dollarcorp.moneycorp.local -Recurse`
@@ -140,4 +140,4 @@
 - `Get-GPResultantSetofPolicy -ReportType Html -Path C:\Users\Administrator\report.html` (Provides RSoP)
 
 **Get GPO(s) which use Restricted Groups or groups.xml for interesting users**
-Get-NetGPOGroup
+- `Get-NetGPOGroup`
