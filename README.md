@@ -71,6 +71,7 @@
 - `Find-UserField -SearchField Description -SearchTerm "built"`
 - `Get-ADUser -Filter 'Description -like "*built*"' -Properties Description | select name,Description`
 
+## Domain Enumeration Part 2
 **Get a list of computers in the current domain**
 - `Get-NetComputer`
 - `Get-NetComputer -OperatingSystem "*Server 2016"`
@@ -121,3 +122,22 @@
 
 **Get all fileservers of the domain**
 - `Get-NetFileServer`
+
+## Domain Enumeration Part 3
+**Domain Enumeration - GPO**
+- Group Policy provides the ability to manage configuration and changes easily and centrally in AD.
+- Allows configuration of
+  - Security Settings
+  - Registry-based policy settings
+  - Group policy preferences like startup/shutdown/log-on/logogg scripts settings
+  - Software installation
+- GPO can be abused for various attacks like privesc, backdoors, persistence etc.
+
+**Get list of GPO in current domain**
+- `Get-NetGPO`
+- `Get-NetGPO -ComputerName dcorp-student1.dollarcorp.moneycorp.local`
+- `Get-GPO -All` (GroupPolicy module)
+- `Get-GPResultantSetofPolicy -ReportType Html -Path C:\Users\Administrator\report.html` (Provides RSoP)
+
+**Get GPO(s) which use Restricted Groups or groups.xml for interesting users**
+Get-NetGPOGroup
