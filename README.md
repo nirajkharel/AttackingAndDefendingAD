@@ -135,6 +135,7 @@
 
 **Get list of GPO in current domain**
 - `Get-NetGPO`
+- `Get-NetGPO | select displayname`
 - `Get-NetGPO -ComputerName dcorp-student1.dollarcorp.moneycorp.local`
 - `Get-GPO -All` (GroupPolicy module)
 - `Get-GPResultantSetofPolicy -ReportType Html -Path C:\Users\Administrator\report.html` (Provides RSoP)
