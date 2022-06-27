@@ -162,4 +162,4 @@
 - `Get-ObjectAcl - ADSprefix 'CN=Administrator,CN=Users' -Verbose`
 
 **We can also enumerate ACLs using ActiveDirectory module but without resolving GUIDs**
-- (Get-Acl 'AD:\CN=Administrator,CN=Users,DC=dollarcorp,DC=moneycorp,DC=local').Access
+- `(Get-Acl 'AD:\CN=Administrator,CN=Users,DC=dollarcorp,DC=moneycorp,DC=local').Access`
