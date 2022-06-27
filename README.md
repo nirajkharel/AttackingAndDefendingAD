@@ -142,3 +142,24 @@
 
 **Get GPO(s) which use Restricted Groups or groups.xml for interesting users**
 - `Get-NetGPOGroup`
+
+**Access Control Model**
+- Enables control on the ability of a process to access objects and other resources in active directory based on:
+  - Access Tokens (security context of a process - identity and privs of user)
+  - Security Descriptors (SID of the owner, Discretionary ACL (DACL)and System ACL (SACL))
+
+**Access Control List (ACL)**
+- It is a list of Access Control Entries (ACE) - ACE corresponds to individual permission or audits access. Who has permission and what can be done on an objecct?
+- Two types:
+  - DACL : Defines the permissions trustees (a user or group) have on an object.
+  - SACL : Logs success and failure audit messages when an objecct is accessed.
+- ACLs are vital to security architecture of AD.
+
+**Get the ACLs associated with the specified object**
+-` Get-ObjectAcl -SamAccountName student1 -ResolveGUIDs`
+
+**Get the ACLs associated with the specific prefix to be used for search**
+- `Get-ObjectAcl - ADSprefix 'CN=Administrator,CN=Users' -Verbose`
+
+**We can also enumerate ACLs using ActiveDirectory module but without resolving GUIDs**
+- (Get-Acl 'AD:\CN=Administrator,CN=Users,DC=dollarcorp,DC=moneycorp,DC=local').Access
