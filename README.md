@@ -159,7 +159,7 @@
 - `Get-ObjectAcl -SamAccountName student1 -ResolveGUIDs`
 
 **Get the ACLs associated with the specific prefix to be used for search**
-- `Get-ObjectAcl - ADSprefix 'CN=Administrator,CN=Users' -Verbose`
+- `Get-ObjectAcl -ADSprefix 'CN=Administrator,CN=Users' -Verbose`
 
 **We can also enumerate ACLs using ActiveDirectory module but without resolving GUIDs**
 - `(Get-Acl 'AD:\CN=Administrator,CN=Users,DC=dollarcorp,DC=moneycorp,DC=local').Access`
