@@ -156,7 +156,7 @@
 - ACLs are vital to security architecture of AD.
 
 **Get the ACLs associated with the specified object**
--` Get-ObjectAcl -SamAccountName student1 -ResolveGUIDs`
+- `Get-ObjectAcl -SamAccountName student1 -ResolveGUIDs`
 
 **Get the ACLs associated with the specific prefix to be used for search**
 - `Get-ObjectAcl - ADSprefix 'CN=Administrator,CN=Users' -Verbose`
