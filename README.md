@@ -206,3 +206,7 @@
 - `Find-LocalAdminAccess -Verbose`
 - This function queries the DC of the current or provided domain for a list of computers `(Get-NetComputer)` and then use multi-threaded `Invoke-CheckLocalAdminAccess` on each machine.
 - This can also be done with the help of remote administration tools like WMI and PowerShell remoting. Pretty useful in cases ports (RPC and SMB) used by Find-LocalAdminAccess are blocked. `Find-WMILocalAdminAccess.ps1`
+
+**Find local admins on all machines of the domain (needs administrator privs on non-dc machines)**
+- `Invoke-EnumerateLocalAdmin -Verbose`
+- This function queries the DC of the current or provided domain for a list of computers `(Get-NetComputer)` and then use multi-threaded `Get-NetLocalGroup` on each machine.
