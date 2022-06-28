@@ -172,3 +172,36 @@
 
 **Get the ACLs associated with the specified path**
 - `Get-PathAcl -Path "\\dcorp-dc.dollarcorp.moneycorp.local\sysvol"`
+
+
+## Domain Enumeration Part 4 - Trusts
+**Get a list of all domain trusts for the current domain**
+- `Get-NetDomainTrust`
+- `Get-NetDomainTrust -Domain us.dollarcorp.moneycorp.local`
+- `Get-ADTrust`
+- `Get-ADTrust -Identity us.dollarcorp.moneycorp.local`
+
+**Get details about the current forest**
+- `Get-NetForest`
+- `Get-NetForest -Forest eurocorp.local`
+- `Get-ADForest`
+- `Get-ADForest -Identity eurocorp.local`
+
+**Get all domains in the current forest**
+- `Get-NetForestDomain`
+- `Get-NetForestDomain -Forest eurocorp.local`
+- `(Get-ADForest).Domains`
+
+**Get all global cataogs for the current forest**
+- `Get-NetForestCatalog`
+- `Get-NetForestCatalog -Forest eurocorp.local`
+- `Get-ADForest | select -ExpandProperty GlobalCatalogs`
+
+**Map trusts of a forest**
+- `Get-NetForestTrust`
+- `Get-NetForestTrust -Forest eurocorp.local`
+- `Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'`
+
+**Find all machines on the current domain where the current user has local admin access**
+- `Find-LocalAdminAccess -Verbose`
+- This function queries the DC of the current or provided domain for a list of computers `(Get-NetComputer)` and then use multi-threaded `Invoke-CheckLocalAdminAccess` on each machine.
