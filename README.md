@@ -213,17 +213,18 @@
 
 
 ## Local Privilege Escalation Part I
-- In an AD environment, there are multiple scenarios which lead to privilege escalation. Weh had a look at the following
+**In an AD environment, there are multiple scenarios which lead to privilege escalation. We had a look at the following**
  - Hunting for Local Admin access on other machines.
  - Hunting for high privlege domain accounts (like a Domain Administrator)
 
-- There are various ways of locally escalating privileges on Windows box:
+**There are various ways of locally escalating privileges on Windows box:**
  - Missing patches
  - Automated deployment and AutoLogon passwords in clear text.
  - AlaysInstallElevated (Any user can run MSI as SYSTEM)
  - Misconfigured Services
  - DLL Hijacking and more
-- We can use below tools for complete coverage
+
+**We can use below tools for complete coverage**
  - PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
  - BeRoot : https://github.com/AlessandroZ/BeRoot
  - Privesc : https://github.com/enjoiz/Privesc
