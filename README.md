@@ -210,3 +210,20 @@
 **Find local admins on all machines of the domain (needs administrator privs on non-dc machines)**
 - `Invoke-EnumerateLocalAdmin -Verbose`
 - This function queries the DC of the current or provided domain for a list of computers `(Get-NetComputer)` and then use multi-threaded `Get-NetLocalGroup` on each machine.
+
+
+## Local Privilege Escalation Part I
+- In an AD environment, there are multiple scenarios which lead to privilege escalation. Weh had a look at the following
+ - Hunting for Local Admin access on other machines.
+ - Hunting for high privlege domain accounts (like a Domain Administrator)
+
+- There are various ways of locally escalating privileges on Windows box:
+ - Missing patches
+ - Automated deployment and AutoLogon passwords in clear text.
+ - AlaysInstallElevated (Any user can run MSI as SYSTEM)
+ - Misconfigured Services
+ - DLL Hijacking and more
+- We can use below tools for complete coverage
+ - PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
+ - BeRoot : https://github.com/AlessandroZ/BeRoot
+ - Privesc : https://github.com/enjoiz/Privesc
