@@ -274,3 +274,12 @@ println "out> $sout err> $err"
 - To verify if the user is on administrator group or not.
 - `powershell -c whoami`
 - `powershell net localgroup administrators`
+
+## Domain Enumeration Bloodhound
+- Provides GUI for AD entities and relationships for the data collected by its ingestors.
+- Uses Graph Theory for providing the capability of mapping shortest path for interesting things like Domain Admins.
+- https://github.com/BloodHoundAD/BloodHound
+- There are built-in queries for frequently used actions.
+- Also supports custom Cypher queries.
+
+## Lateral Movement
