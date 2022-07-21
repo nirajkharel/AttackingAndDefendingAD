@@ -245,3 +245,14 @@
 - Priesc : `Invoke-PrivEsc`
  
 ## Local Privilege Escalation Part 2
+**Feature Abuse**
+- What we have been doing up to now (and will keep doing further in this calss) is relying on feature abuse.
+- Features abuse are awesome as there are seldom patches for them and they are not the focus of security teams!
+- One of my favourite features abuse is targeting enterprise applications which are not built keeping security in mind.
+- On windows, many enterprise applications need either Administrative privileges or SYSTEM privileges maing them a great avenue for privilege escalation.
+
+**Feature Abuse - Jenkins**
+- Jenkins is a widely used Continuous Integration tool.
+- There are many interesting aspects with Jenkings but for now we would limit our discussion to the ability of running system commands on Jenkins.
+- On a windows machine, a jenkins master or jenkins slave needs at least local admin privilege to operate.
+- Login into the Jenkins.
