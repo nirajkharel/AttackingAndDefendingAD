@@ -228,4 +228,12 @@
  - PowerUp: https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc
  - BeRoot : https://github.com/AlessandroZ/BeRoot
  - Privesc : https://github.com/enjoiz/Privesc
-- test
+
+**Services Issues using PowerUp**
+- Get services with unquoted paths and a space in their name
+- `Get-ServiceUnquoted -Verbose`
+- Get services where the current user can write to its binary path or change arguments to the binary
+- `Get-ModifiableServiceFile -Verbose`
+- Get the services whose configuration current user can modify.
+- `Get-ModifiableService -Verbose`
+ 
