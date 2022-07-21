@@ -282,4 +282,11 @@ println "out> $sout err> $err"
 - There are built-in queries for frequently used actions.
 - Also supports custom Cypher queries.
 
+**Ingestors**
+- Supply data to BloodHound:
+  - `C:\AD\Tools\BloodHound-master\Ingestors\SharpHound.ps1`
+  - `Invoke-BloodHound -CollectionMethod All`
+- The generated archive can be uploaded to the BloodHound application.
+- To avoid detections like ATA
+  - `Invoke-BloodHound -CollectionMethod All -ExcludeDC`
 ## Lateral Movement
