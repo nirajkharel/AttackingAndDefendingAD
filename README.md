@@ -251,11 +251,11 @@
 - One of my favourite features abuse is targeting enterprise applications which are not built keeping security in mind.
 - On windows, many enterprise applications need either Administrative privileges or SYSTEM privileges maing them a great avenue for privilege escalation.
 
-**Feature Abuse - Jenkins**
+**Feature Abuse - Jenkins I**
 - Jenkins is a widely used Continuous Integration tool.
 - There are many interesting aspects with Jenkings but for now we would limit our discussion to the ability of running system commands on Jenkins.
 - On a windows machine, a jenkins master or jenkins slave needs at least local admin privilege to operate.
-- Login into the Jenkins. The user should be admin. We can do brute force attack for this.
+- Login into the Jenkins. The user should be admin. We can do brute force attack for this. Jenkins does not have rate limit or passwod policy which means user can have any length for password and does not disturb the service when brute force is attempted.
 - Apart from numerous plugins, there are two ways of executing commands on a Jenkins Master.
 - If you have Admin access (default installation before 2.x), go to `http://<jenkins_server>/script/console`
 - In the script console, Groovy scripts could be executed
@@ -266,3 +266,11 @@ proc.consumeProcessOutput(sout, serr)
 proc.waitForOrKill(1000)
 println "out> $sout err> $err"
 ```
+
+**Feature Abuse - Jenkins II**
+- If you don't have admin access but could add or edit build steps in build configuration. Add a build step, and "Execute Windows Batch Command" and enter:
+- `powershell -c <command>`
+- Again, you could download and execute scripts, run encoded scripts and more.
+- To verify if the user is on administrator group or not.
+- `powershell -c whoami`
+- `powershell net localgroup administrators`
