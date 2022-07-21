@@ -231,14 +231,17 @@
 
 **Services Issues using PowerUp**
 - Get services with unquoted paths and a space in their name
-- `Get-ServiceUnquoted -Verbose`
-- If the path is unquoted under the root directory which means `C:/Tes File/test/test.exe`, we cannot perform this privilege escalation method because to drop an executable under the C:/ Path, we need to be administrator already.
+  - `Get-ServiceUnquoted -Verbose`
+  - If the path is unquoted under the root directory which means `C:/Tes File/test/test.exe`, we cannot perform this privilege escalation method because to drop an executable under the C:/ Path, we need to be administrator already.
+  - Also the service should have `StartName : LocalSystem` and `CanRestart : True` functionalities
 - Get services where the current user can write to its binary path or change arguments to the binary
-- `Get-ModifiableServiceFile -Verbose`
+  - `Get-ModifiableServiceFile -Verbose`
 - Get the services whose configuration current user can modify.
-- `Get-ModifiableService -Verbose`
+  - `Get-ModifiableService -Verbose`
 
 **Run all checks from:**
 - PowerUp : `Invoke-AllChecks`
 - BeRoot is an executable : '.\beRoot.exe'
 - Priesc : `Invoke-PrivEsc`
+ 
+## Local Privilege Escalation Part 2
