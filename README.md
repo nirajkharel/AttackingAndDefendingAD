@@ -289,4 +289,5 @@ println "out> $sout err> $err"
 - The generated archive can be uploaded to the BloodHound application.
 - To avoid detections like ATA
   - `Invoke-BloodHound -CollectionMethod All -ExcludeDC`
+
 ## Lateral Movement
