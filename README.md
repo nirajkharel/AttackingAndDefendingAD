@@ -291,3 +291,8 @@ println "out> $sout err> $err"
   - `Invoke-BloodHound -CollectionMethod All -ExcludeDC`
 
 ## Lateral Movement
+**PowerShell Remoting**
+- Think of it as a psexec on steriods.
+- You will found this inceasingly used in enterprises. Enabled by default on Server 2012 onwards.
+- You may need to enable remote (Enable-PSRemoting) on a Desktop Windows machine, Admin privs are required to do that.
+- You get elevated shell on remote system if admin creds are used to authenticate(which is the default setting).
