@@ -334,3 +334,5 @@ println "out> $sout err> $err"
   - `Invoke-Command -ScriptBlock ${function:Get-PassHashes} - ComputerName (Get-Content <list_of_servers>)`
 - In this case, we are passing Arguments. Keep in mind that only positional arguments could be passed this way:
   - `Invoke-Command -ScriptBlock ${function:Get-PassHashes} -ComputerName (Get-Content <list_of_servers>) -ArgumentList`
+- In below, a functional call within the script is used:
+  - `Invoke-Command -Filepath C:\scripts\Get-PassHashes.ps1 -ComputerName (Get-Content <list_of_servers>)` 
