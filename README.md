@@ -296,3 +296,19 @@ println "out> $sout err> $err"
 - You will found this inceasingly used in enterprises. Enabled by default on Server 2012 onwards.
 - You may need to enable remote (Enable-PSRemoting) on a Desktop Windows machine, Admin privs are required to do that.
 - You get elevated shell on remote system if admin creds are used to authenticate(which is the default setting).
+
+**PowerShell Remoting One-to-One**
+- It works over a session called PSSession
+- PSSession
+  - Interactive
+  - Runs in a new process (wsmprovhost)
+  - Is Stateful
+- Useful cmdlets
+  - `New-PSSession`
+  - `Enter-PSSession`
+  - We can use `New-PSSession` or `Enter-PSSession` to get access to a remote machine using PowerShell remoting.
+  - We need local administrator privilege or administrator privilege onto target machine(computer), which means the account which we have compromised should have local administraor or administrator privlege on the target machine.
+  - `. .\PowerView.ps1`
+  - View the computers which we have local admin access on : `Find-LocalAdminAccess`
+  - `Enter-PSSession -ComputerName <computer-name><domain-name>`
+  - `whoami`
