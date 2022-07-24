@@ -326,3 +326,7 @@ println "out> $sout err> $err"
   - as background job and more
 - The best thing in PowerShell for passing the hashes, using credentials and executing commands on multiple remote computers
 - Use `-Credential` parameter to pass username/password.
+- Use below to execute commands or scriptblocks:
+  - `Invoke-Command -Scriptblock {Get-Process} -ComputerName (Get-Content <list_of_servers>)`
+- Use below to execute scripts from files
+  - `Invoke-Command -FilePath C:\scripts\Get-PassHashes.ps1 -ComputerName (Get-Content <list_of_servers>)`
