@@ -3,7 +3,7 @@
 <a href="https://twitter.com/nirajkharel7" ><img src="https://img.shields.io/twitter/follow/nirajkharel7?style=social" /> </a>
 </div>
 
-## Domain Enumerationn Part 1
+## Domain Enumeration Part 1
 - The enumeration can be done by using Native executables and .NET classes
 - `$ADClass = [System.DirectoryServices.ActiveDirectory.Domain]`
 - `$ADClass::GetCurrentDomain()`
