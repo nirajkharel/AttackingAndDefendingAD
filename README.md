@@ -344,4 +344,4 @@ println "out> $sout err> $err"
   - The script could be used to dump credentials, tickets and more using mimikatz with PowerShell without dropping the mimikatz exe to disk.
   - It is very useful for passing and replaying hashes, tickets and for many exciting Active Directory Attacks.
   - Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory. All the functions of mimikatz could be used from this scipt.
-  - The script needs administrative privileges for dumping credentials from local machines. May attacks need specific privileges which are covered while discussing that attack.
+  - The script needs administrative privileges for dumping credentials from local machines. Many attacks need specific privileges which are covered while discussing that attack.
