@@ -312,3 +312,17 @@ println "out> $sout err> $err"
   - View the computers which we have local admin access on : `Find-LocalAdminAccess`
   - `Enter-PSSession -ComputerName <computer-name><domain-name>`
   - `whoami`
+  - `whomai /priv` : To view the privileges information.
+
+**PowerShell Remoting One-to-Many**
+- Also known as Fan-out remoting.
+- Non-interactive
+- Executes command parallely
+- Useful cmdlets
+  - `Invoke-Command`
+- Run commands and scripts on
+  - multiple remote computers
+  - in disconnected sessions (v3)
+  - as background job and more
+- The best thing in PowerShell for passing the hashes, using credentials and executing commands on multiple remote computers
+- Use `-Credential` parameter to pass username/password.
