@@ -345,3 +345,7 @@ println "out> $sout err> $err"
   - It is very useful for passing and replaying hashes, tickets and for many exciting Active Directory Attacks.
   - Using the code from ReflectivePEInjection, mimikatz is loaded reflectively into the memory. All the functions of mimikatz could be used from this scipt.
   - The script needs administrative privileges for dumping credentials from local machines. Many attacks need specific privileges which are covered while discussing that attack.
+
+
+## Domain Persistence Part 1
+## Domain Persistence Part 2
