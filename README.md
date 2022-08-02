@@ -373,4 +373,10 @@ println "out> $sout err> $err"
   - If it runs as a service, PAC validation is optional (disabled).
   - If a service runs as System, it performs server signature verification on the PAC (computer account long-term key).
 
+**Persistence - Golden Ticket**
+- A golden ticket is signed and encrypted by the hash of krbtgt account which makes it a valid TGT ticket.
+- Since user account validation is not done by Domain Controller (KDC service) until TGT is older than 20 minutes, we can use even deleted/revoked accounts.
+- The krbtgt user hash could be used to impersonate any user with any privileges from even a non-domain machine.
+- Password change has no effect on this attack.
+
 ## Domain Persistence Part 2
