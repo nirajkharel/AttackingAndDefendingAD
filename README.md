@@ -357,4 +357,20 @@ println "out> $sout err> $err"
   - `Invoke-Mimikatz -Command '"sekurlsa::pth /user:Administrator /domain:dollarcorp.moneycorp.local /ntlm:<ntlmhash> /run:powershell.exe"'`
   
 ## Domain Persistence Part 1
+- There is much more to Active Directory than "just" the Domain Admin.
+- Once we have DA privileges new avenues of persistence, escalation to EA and attacks across trust open up!
+- Let's have a look at abusing trust within domain, across domains and forests and various attacks on Kerberos.
+- Kerberos is the basis of authentication in a Windows Active Directory environment.
+- It has been constantly attacked since it was implemented with new attacks and scrutiny every couple of years.
+
+**Kerberos**
+- NTLM password hash for kerberos RC4 encryption.
+- Logon Ticket (TGT) provides user auth to DC.
+- Kerberos policy only checked when TGT is created.
+- DC validates user account only when TGT > 20 mins.
+- Service Ticket (TGS) PAC validation is optional & rare.
+  - Server LSASS sends PAC validation request to DC's netlogon service (NRPC)
+  - If it runs as a service, PAC validation is optional (disabled).
+  - If a service runs as System, it performs server signature verification on the PAC (computer account long-term key).
+
 ## Domain Persistence Part 2
