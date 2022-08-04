@@ -392,3 +392,9 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Using the DCSync options needs no code execution (no need to run Invoke-Mimikatz) on the target DC.
 
 ## Domain Persistence Part 2
+**Persistence - Silver Ticket**
+- If we have access to this NTLM hash of the service account password, we can force TGS and present it to the application server. This is what a Silver Ticket attack defines.
+- Silver Ticket is a valid TGS (Golden Ticket is TGT)
+- Encrypted and Signed by the NTLM hash of the service account (Golden ticket is signed by hash of krbtgt) of the service running with that account.
+- Services rarely check PAC (Privileged Attribute Certificate)
+- Reasonable persistence period (default 30 days for computer accounts)
