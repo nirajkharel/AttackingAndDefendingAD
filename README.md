@@ -398,3 +398,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Encrypted and Signed by the NTLM hash of the service account (Golden ticket is signed by hash of krbtgt) of the service running with that account.
 - Services rarely check PAC (Privileged Attribute Certificate)
 - Reasonable persistence period (default 30 days for computer accounts)
+
+- Silver Ticket let us pretend we're domain admin to one specific service.
+- We need perform kerberoasting attack in order to get the hash.
+- Crack the hash with hashcat, so that we will get the credential of the service account.
