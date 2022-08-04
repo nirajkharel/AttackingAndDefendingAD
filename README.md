@@ -433,3 +433,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - You can access other machines as well as long as they authenticate with the DC which has been patched and the DC is not rebooted.
 
 ## Domain Persistence Part 3
+- DSRM is Directory Services Restore Mode.
+- There is a local administrator on every DC called "Administrator" whose password is the DSRM password.
+- DSRM password (SafeModePassword) is required when a server is promoted to Domain Controller and it is rarely changed.
+- After alterting the configuration on the DC, it is possible to pass the NTLM hash of this user to access the DC.
