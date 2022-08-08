@@ -470,3 +470,12 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Schema Admins
 - Administrators
 - Replicator
+
+**Well known abuse of some of the Protected Groups - All of the below can log on locally to DC**
+- Account Operators: Cannot modify DA/EA/BA groups. Can modify nested groups within these groups.
+- Backup Operators: Backup GPO, edit to add SID of controlled account to a privileged group and Restore.
+- Server Operators: Run a command as system (using the disabled Browser service)
+- Print Operators: Copy ntds.dit backup, load device drivers.
+
+- With DA privileges (Full Control/Write permissions) on the AdminsSDHolder object, it can be used as a backdoor/persistence mechanism by adding a user with Full Permissions (or other interesting permissions) to the AdminSDHolder object.
+- In 60 minutes (when SDPROP runs), the user will be added with Full Control to the ACL of groups like Domain Admins without actually being a member of it.
