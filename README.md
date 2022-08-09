@@ -555,3 +555,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose`
 
 ## Domain Privilege Escalation Kerberoast
+**Priv Esc - Kerberoast**
+- Offline cracking of service account passwords.
+- The Kerberos session ticket (TGS) has a server portion which is encrypted with the password hash of service account. This makes it possible to request a ticket and do offline password attack.
+- Service accounts are many times ignored (passwords are rarely changed) and have privileged access.
+- Password hashes of service accounts could be used to create Silver tickets.
