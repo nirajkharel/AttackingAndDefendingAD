@@ -511,4 +511,10 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - This should provide us the capability to use DCSync without having Domain Admin privileges.
 - Execute DCSync
   - `Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'`
-  - 
+  
+## Domain Persistence Part 4
+**Persistence using ACLs - Security Descriptors**
+- Once we have local administrative on a box, it is possible to modify Security Descriptors (security information like Owner, primary group, DACL and SACL) of multiple remote access methods (securable objects) to allow access to non-admin users.
+- Administrative privileges are required for this.
+- It, of course, works as a very useful and impactful backdoor mechanism.
+
