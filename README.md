@@ -518,3 +518,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Administrative privileges are required for this.
 - It, of course, works as a very useful and impactful backdoor mechanism.
 
+- Security Descriptor Definition Language defines the format which is used to describe a security descriptor. SDDL uses ACE strings for DACL and SACL:
+  - `ace_type;ace_flags;rights;object_guid;inherit_object_guid;account_sid`
+- ACE for builit-in administrators for WMI namespaces
+  - `A;CI;CCDCLCSWRPWRPCWD;;;SID`
+  - We need to replace the SID with the SID of account which we would like to use. The account will have full access over the particular namespaces.
