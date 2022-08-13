@@ -634,4 +634,6 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Kerberos Delegation allows to "reuse the end-usr credentials to access resources hosted on a different server".
 - This is typically useful in multi-tier service or applications where Kerberos Double Hop is required.
 - For example, users authenticates to a web server and web server makes requests to a database server. The web server can request access to resources (all or some resources depending on the type of delegation) on the database server as the user and not as the web server's service account.
-- Please note that, for the above example, the service account for web service must be trsuted for delegation to be able to make requests as a user.
+- Please note that, for the above example, the service account for web service must be trusted for delegation to be able to make requests as a user.
+
+- Uncontrained Delegation which allows the first hop server (web server in our example) to request access to any service on any computer in the domain.
