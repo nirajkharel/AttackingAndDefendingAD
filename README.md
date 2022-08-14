@@ -653,6 +653,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Get an access
   - `Invoke-Mimikatz -Command '"kerberos:ptt <ticket>"'`
 
+## Domain Privilege Escalation: Constrained Delegation
 **Priv Esc - Constrained Delegation**
 - Constrained Delegation when enabled on a service account, allows access only to specified services on specified computers as a user.
 - A typical scenario where constrained delegation is used - A user authenticates to a web service without using Kerberos and the web service makes requests to a database server to fetch results based on the user's authorization.
