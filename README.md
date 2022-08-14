@@ -637,3 +637,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Please note that, for the above example, the service account for web service must be trusted for delegation to be able to make requests as a user.
 
 - Uncontrained Delegation which allows the first hop server (web server in our example) to request access to any service on any computer in the domain.
+- When unconstrained delegaton is enabled, the DC places user's TGT inside TGS. When presented to the server with unconstrained delegation, the TGT is extracted from TGS and stored in LSASS. This way the server can reuse the user's TGT to access any other resource as the user.
+- This could be used to escalate privileges in case we can compromise the computer with unconstrained delegation and a Domain Admin connects to that machine.
