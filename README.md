@@ -670,3 +670,11 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - The web service can now authenticate to the CIFS on dcorp-mssql as Joe using the supplied TGS.
 
 - To abuse constrained delegation in above scenario, we need to have access to the websvc account. If we have access to that account, it is possible to access the services listed in msDS-AllowedToDelegateTo of the websvc account as ANY user.
+
+**Enumerate users and computers with constrained delegation enabled**
+- Using PowerView
+  - `Get-DomainUser -TrustedToAuth`
+  - `Get-DomainComputer -TrustedToAuth`
+
+- Using ActiveDirectory module.
+  - `Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne "$null"} -Properties msDS-AllowedToDelegateTo`
