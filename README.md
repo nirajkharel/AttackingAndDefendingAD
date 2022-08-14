@@ -657,5 +657,6 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Constrained Delegation when enabled on a service account, allows access only to specified services on specified computers as a user.
 - A typical scenario where constrained delegation is used - A user authenticates to a web service without using Kerberos and the web service makes requests to a database server to fetch results based on the user's authorization.
 - To impoersonate the user, Service for User (S4U) extension is used which provides two extensions:
-  - Service for User to Self (S4U2self) - Allows a service to obtain forwardable TGS to itself on behalf of a user.
-  - Service for User to Proxy (S4U2proxy) - Allows a service to obtain a TGS to a second service on behalf of a user.
+  - Service for User to Self (S4U2self) - Allows a service to obtain forwardable TGS to itself on behalf of a user with just the user principal name without supplying a password. The service account must have the TRUSTED_TO_AUTHENTICATE_FOR_DELEGATION-T2A4D UserAccountControl attribute.
+  - Service for User to Proxy (S4U2proxy) - Allows a service to obtain a TGS to a second service on behalf of a user. Which second service? This is controlled by msDS-AllowedToDelegateTo attribute. This attribute contains a list of SPNs to which the user tokens can be forwarded.
+
