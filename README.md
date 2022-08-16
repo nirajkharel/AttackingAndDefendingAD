@@ -730,3 +730,11 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
 - MS SQL servers are generally deployed in plenty in a Windows domain.
 - SQL Servers provide very good options for lateral movement as domain users can be mapped to database roles.
 - For MSSQL and PowerSehll hackery, lets use PowerUpSQL: https://github.com/NetSPI/PowerUpSQL
+
+- Discovery (SPN Scanning)
+  - `Get-SQLInstanceDomain`
+- Check Accessibility
+  - `Get-SQLConnectionTestThreaded`
+  - `Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -Verbose`
+- Gather Information  
+  - `Get-SQLInstanceDomain | Get-SQLServerInfo -Verbose`
